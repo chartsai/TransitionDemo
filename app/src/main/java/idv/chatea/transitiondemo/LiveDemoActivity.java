@@ -27,7 +27,7 @@ public class LiveDemoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_live);
+        setContentView(R.layout.activity_live_demo);
 
         ViewGroup container = (ViewGroup) findViewById(R.id.container);
 

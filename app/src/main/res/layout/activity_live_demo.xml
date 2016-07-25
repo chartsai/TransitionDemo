@@ -8,15 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="idv.chatea.transitiondemo.LiveDemoActivity">
+    tools:context=".LiveDemoActivity">
 
-    <FrameLayout
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_centerInParent="true">
-
-        <include layout="@layout/activity_live_scene1" />
-
-    </FrameLayout>
+    <include layout="@layout/activity_live_scene1" />
 
 </RelativeLayout>
