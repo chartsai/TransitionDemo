@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private static final Sample[] mSamples = {
             new Sample("Scene", SceneActivity.class),
+            new Sample("TransitionManager", TransitionManagerActivity.class),
             new Sample("Transition Cross Activities", CrossTransitionActivity.class),
     };
 
