@@ -1,56 +1,63 @@
 package idv.chatea.transitiondemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Scene;
-import android.transition.TransitionManager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-    private Button[] stepButtons;
-    private Scene[] scenes;
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+
+    private static final String TITLE = "title";
+
+    private static class Sample {
+        private String title;
+        private Class klass;
+
+        public Sample(String title, Class klass) {
+            this.title = title;
+            this.klass = klass;
+        }
+    }
+
+    private static final Sample[] mSamples = {
+        new Sample("Scene", SceneActivity.class),
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setupViews();
+        ListView listView = (ListView)findViewById(R.id.list_view);
+
+        ListAdapter adapter = new SimpleAdapter(this, createListItems(), android.R.layout.simple_list_item_1,
+                new String[] {TITLE}, new int[] {android.R.id.text1});
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
     }
 
-    private void setupViews() {
-        stepButtons = new Button[4];
-        scenes = new Scene[4];
-
-        ViewGroup root = (ViewGroup) findViewById(R.id.scene_container);
-
-        stepButtons[0] = (Button) findViewById(R.id.step1);
-        stepButtons[1] = (Button) findViewById(R.id.step2);
-        stepButtons[2] = (Button) findViewById(R.id.step3);
-        stepButtons[3] = (Button) findViewById(R.id.step4);
-
-        for (int i = 0; i < stepButtons.length; i++) {
-            Button button = stepButtons[i];
-            final int sceneNumber = i;
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    transitionTo(sceneNumber);
-                }
-            });
+    private List<Map<String, Object>> createListItems() {
+        List<Map<String, Object>> items = new ArrayList<>();
+        for (Sample mSample : mSamples) {
+            Map<String, Object> map = new HashMap<>();
+            map.put(TITLE, mSample.title);
+            items.add(map);
         }
-
-        scenes[0] = Scene.getSceneForLayout(root, R.layout.activity_main_scene1, this);
-        scenes[1] = Scene.getSceneForLayout(root, R.layout.activity_main_scene2, this);
-        scenes[2] = Scene.getSceneForLayout(root, R.layout.activity_main_scene3, this);
-        scenes[3] = Scene.getSceneForLayout(root, R.layout.activity_main_scene4, this);
+        return items;
     }
 
-    private void transitionTo(int sceneNumber) {
-        TransitionManager.go(scenes[sceneNumber]);
-        setupViews();
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, mSamples[position].klass);
+        startActivity(intent);
     }
 }
