@@ -15,11 +15,20 @@ import android.widget.ImageView;
 
 public class CrossTransitionActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
-    private static final int[] IMAGE_IDS = {
-            R.drawable.android_study_group,
-            R.drawable.android_taipei,
-            R.drawable.android_taipei_chocolabs,
-            R.drawable.android_taipei_sudo,
+    private static class Item {
+        int imageId;
+        String description;
+        Item(int imageId, String description) {
+            this.imageId = imageId;
+            this.description = description;
+        }
+    }
+
+    private static final Item[] ITEMS = {
+            new Item(R.drawable.android_study_group, "Android Study Group"),
+            new Item(R.drawable.android_taipei, "Android Taipei"),
+            new Item(R.drawable.android_taipei_sudo, "Android Taipei Sudo"),
+            new Item(R.drawable.android_taipei_chocolabs, "Android Taipei ChocoLabs"),
     };
 
     @Override
@@ -36,11 +45,11 @@ public class CrossTransitionActivity extends AppCompatActivity implements Adapte
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(this, ImageActivity.class);
-        intent.putExtra(ImageActivity.KEY_IMAGE_ID, IMAGE_IDS[i]);
+        intent.putExtra(ImageActivity.KEY_IMAGE_ID, ITEMS[i].imageId);
+        intent.putExtra(ImageActivity.KEY_DESCRIPTION, ITEMS[i].description);
 
         ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this, new Pair<>(view, ImageActivity.VIEW_NAME_IMAGE));
-
         ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
     }
 
@@ -48,7 +57,7 @@ public class CrossTransitionActivity extends AppCompatActivity implements Adapte
 
         @Override
         public int getCount() {
-            return IMAGE_IDS.length;
+            return ITEMS.length;
         }
 
         @Override
@@ -68,7 +77,7 @@ public class CrossTransitionActivity extends AppCompatActivity implements Adapte
             }
 
             ImageView iv = (SquareImageView) view;
-            iv.setImageResource(IMAGE_IDS[position]);
+            iv.setImageResource(ITEMS[position].imageId);
 
             return view;
         }
