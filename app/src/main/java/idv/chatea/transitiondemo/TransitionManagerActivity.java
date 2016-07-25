@@ -39,8 +39,20 @@ public class TransitionManagerActivity extends AppCompatActivity implements Radi
         }
 
         scenes[1] = Scene.getSceneForLayout(sceneRootView, R.layout.activity_transition_manager_scene2, this);
+        scenes[1].setExitAction(new Runnable() {
+            @Override
+            public void run() {
+                setTitle("Leave scene 2");
+            }
+        });
 
         scenes[2] = Scene.getSceneForLayout(sceneRootView, R.layout.activity_transition_manager_scene3, this);
+        scenes[2].setEnterAction(new Runnable() {
+            @Override
+            public void run() {
+                setTitle("Now showing scene3");
+            }
+        });
         scene3TransitionManager = TransitionInflater.from(this).inflateTransitionManager(R.transition.transition_manager_scene3, sceneRootView);
     }
 
