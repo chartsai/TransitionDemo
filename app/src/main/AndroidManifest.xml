@@ -16,6 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SceneActivity" android:label="Scene Demo" />
+        <activity android:name=".CrossTransitionActivity" android:label="Cross Activity Transition"/>
+        <activity android:name=".ImageActivity" android:label="Image"/>
     </application>
 
 </manifest>
