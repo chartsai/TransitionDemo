@@ -27,7 +27,11 @@
         <activity
             android:name=".TransitionManagerActivity"
             android:label="Transition Manager" />
-        <activity android:name=".CustomizedTransitionActivity"></activity>
+        <activity android:name=".CustomizedTransitionActivity" />
+        <activity
+            android:name=".LiveDemoActivity"
+            android:label="@string/title_activity_live_demo" />
+        <activity android:name=".LiveDemoDetailActivity"></activity>
     </application>
 
 </manifest>

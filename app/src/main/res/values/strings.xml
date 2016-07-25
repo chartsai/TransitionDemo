@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TransitionDemo</string>
+    <string name="title_activity_live_demo">LiveDemoActivity</string>
+    <string name="android_taipei_description">
+        七月份 Android Taipei 來啦\n
+        想報名當聽眾的朋友，除了點選活動頁面的參加，也請幫我們填一下報名表單喔：\n
+        http://goo.gl/forms/h7e7LFTDItb1e40A2\n
+        有興趣做技術/專案分享的朋友請點這邊：https://goo.gl/7Gb53u\n
+        《分享主題》\n
+        楊哲偉 - Unit test and UI testing with cucumber\n
+        黃思齊 - 資料視覺化 Power BI\n
+        Charlie Tsai - Android Transition\n
+        林俊廷 - picity 作品分享\n
+    </string>
 </resources>

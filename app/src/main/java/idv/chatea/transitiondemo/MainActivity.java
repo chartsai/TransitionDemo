@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             new Sample("TransitionManager", TransitionManagerActivity.class),
             new Sample("Customize Transition", CustomizedTransitionActivity.class),
             new Sample("Transition Cross Activities", CrossTransitionActivity.class),
+            new Sample("Live Demo", LiveDemoActivity.class),
     };
 
     @Override
