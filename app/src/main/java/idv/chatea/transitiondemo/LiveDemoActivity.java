@@ -53,9 +53,10 @@ public class LiveDemoActivity extends AppCompatActivity {
 
                 ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
                         LiveDemoActivity.this,
-                        new Pair<>((View) title, LiveDemoDetailActivity.VIEW_NAME_TITLE),
-                        new Pair<>((View) icon, LiveDemoDetailActivity.VIEW_NAME_ICON),
-                        new Pair<>((View) description, LiveDemoDetailActivity.VIEW_NAME_DESCRIPTION));
+                        new Pair<View, String>(title, LiveDemoDetailActivity.VIEW_NAME_TITLE),
+                        new Pair<View, String>(icon, LiveDemoDetailActivity.VIEW_NAME_ICON),
+                        new Pair<View, String>(description, LiveDemoDetailActivity.VIEW_NAME_DESCRIPTION));
+
                 ActivityCompat.startActivity(LiveDemoActivity.this, intent, activityOptions.toBundle());
             }
         });
